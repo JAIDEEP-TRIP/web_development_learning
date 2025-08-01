@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        .childcontainer {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+            padding: 20px;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+        hey this is a container
+        <div class="childcontainer">
+            hey this is a child container
+            <div class="child">
+                hey this is a child
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.child').addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents the event from bubbling up to parent elements
+
+            alert('you have clicked me')
+        })
+
+        document.querySelector('.childcontainer').addEventListener('click', (e) => {
+            alert('you have clicked the child container')
+        })
+
+        document.querySelector('.container').addEventListener('click', (e) => {
+            alert('you have clicked the container')
+        })
+         
+        function getrandomcolor() {
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            return `#${randomColor}`;
+        }
+        // setInterval (() =>{
+        // document.querySelector('.container').style.backgroundColor = getrandomcolor();  
+        // document.querySelector('.childcontainer').style.backgroundColor = getrandomcolor();  
+        // document.querySelector('.child').style.backgroundColor = getrandomcolor(); 
+
+        // },3000);
+
+        setTimeout(() => {document.querySelector('.container').addEventListener('click' , (e) =>{
+            e.target.style.backgroundColor = getrandomcolor();  
+        });
+    }, 3000);
+        
+
+
+        
+    </script>
+
+</body>
+
+</html> 

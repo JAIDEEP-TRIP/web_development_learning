@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>History API Playground</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    button { margin: 0.5rem; }
+    #url { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>History API Playground</h1>
+  <p>Current “URL” path: <span id="url">/</span></p>
+  <p>History length: <span id="len">1</span></p>
+
+  <button id="push">pushState ➕</button>
+  <button id="replace">replaceState 🔄</button>
+  <button id="back">◀️ Back</button>
+  <button id="forward">Forward ▶️</button>
+
+  <script>
+    // Helpers to update display
+    function render() {
+      document.getElementById('url').innerText = window.location.pathname;
+      document.getElementById('len').innerText = history.length;
+    }
+
+    // pushState: add a new entry
+    document.getElementById('push').addEventListener('click', () => {
+      const newPage = '/page-' + Math.floor(Math.random() * 100);
+      history.pushState(null, null, newPage);
+      render();
+    });
+
+    // replaceState: replace current entry
+    document.getElementById('replace').addEventListener('click', () => {
+      const newPage = '/replaced-' + Math.floor(Math.random() * 100);
+      history.replaceState(null, null, newPage);
+      render();
+    });
+
+    // back and forward
+    document.getElementById('back').addEventListener('click', () => {
+      history.back();
+      setTimeout(render, 100);  // slight delay to allow navigation
+    });
+    document.getElementById('forward').addEventListener('click', () => {
+      history.forward();
+      setTimeout(render, 100);
+    });
+
+    // Re-render if user navigates with browser buttons
+    window.addEventListener('popstate', render);
+
+    // Initial render
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">History API Playground</a></li>
+            <li><a href="assignment.html">Assignment</a></li>
+            <li><a href="index2.html">Arrays Example</a></li>
+        </ul>
+    </nav>   
+
+    <table>
+        <tr>
+            <td>jaideep</td>
+            <td>AISHWARYA</td>
+        </tr>
+        <tr>
+            <td>UNT</td>
+            <TD>UTD</TD>
+        </tr>
+    </table>
+
+    <div>
+        <h1>Hi this is jaideep</h1>
+        <h2>this is aishwarya</h2>
+        <p>Welcome to our playground!</p>
+    </div>
+    
+    <script>
+       document.querySelectorAll('li').forEach( (li) =>{
+         li.style.backgroundColor = 'yellow';
+       })
+       let table = document.querySelector('table');
+       console.log(table.rows)
+       document.querySelector('div').firstElementChild.style.backgroundColor = 'red';
+       document.querySelector('div').lastElementChild.style.backgroundColor = 'blue';
+    </script>
+</body>
+</html>

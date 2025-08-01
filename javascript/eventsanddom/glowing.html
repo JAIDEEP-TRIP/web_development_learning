@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Glowing Bulb Effect</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bulb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #333;
+      box-shadow: 0 0 10px #000;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .glow {
+      background-color: yellow;
+      box-shadow: 0 0 20px 5px yellow, 0 0 40px 10px orange;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bulb" id="bulb"></div>
+
+  <script>
+    const bulb = document.getElementById('bulb');
+
+    bulb.addEventListener('click', () => {
+      bulb.classList.toggle('glow');
+    });
+  </script>
+
+</body>
+</html>
