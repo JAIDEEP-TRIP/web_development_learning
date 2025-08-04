@@ -1,17 +1,14 @@
-const express = require('express');      
-const path = require('path');         
+const express = require('express');
+const path = require('path');
 
-const router = express.Router(); 
+const router = express.Router();
 
-router.use('/add-product',(req, res, next) => {
-   res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));  
-});
+const productsController = require('../controllers/products.js');
 
-router.post('/product',(req, res) => {
-    console.log(req.body);
-    
-    res.redirect('/');
+router.get('/add-product', productsController.getAddProduct); 
 
-});
+router.post('/product', productsController.postAddProduct);
 
 module.exports = router;
+
+ // Exporting products array to be used in other files
